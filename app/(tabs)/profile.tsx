@@ -1,9 +1,11 @@
 import {Text, View} from 'react-native';
 
 export default function profile() {
-    <View>
+   return(
+   <View>
         <Text>
             This is the Profile page
         </Text>
     </View>
+   )
 }

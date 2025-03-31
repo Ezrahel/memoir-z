@@ -4,7 +4,7 @@ export default function create(){
     return(
         <View>
             <Text>
-                
+                Testing
             </Text>
         </View>
     )

@@ -1,5 +1,5 @@
 import { Text, View, Image } from "react-native";
-import {styles} from '../styles/auth.styles.js'
+import {styles} from '../styles/auth.styles'
 import {Link} from 'expo-router'
 export default function Dashboard() {
   return (

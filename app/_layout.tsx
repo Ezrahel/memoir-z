@@ -3,32 +3,33 @@ import { Ionicons } from "@expo/vector-icons";
 import { Stack, Tabs } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-import { ClerkProvider } from '@clerk/clerk-expo'
+import { ClerkLoaded, ClerkProvider } from '@clerk/clerk-expo'
 import { tokenCache } from '@clerk/clerk-expo/token-cache'
 import { Slot } from 'expo-router'
+import InitialLayout from "@/components/InitialLayout";
 
-
+const publishableKey= process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+if (!publishableKey){
+  throw new Error(
+    "Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env"
+  );
+}
 export default function RootLayout() {
   return (
-    <ClerkProvider tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
+      <ClerkLoaded>
+
     <SafeAreaProvider>
-      <Slot />
+ 
       <SafeAreaView style={{
         backgroundColor: "black", 
         flex:1}}>
 
-  <Stack screenOptions={{
-    headerShown: false
-  }}/>
-  {/* <Tabs>
-    <Tabs.Screen 
-    name='Dashboard' options={{
-      tabBarIcon:({size,color})=> <Ionicons name='menu' size={size} color={color}/>
-      }} />
-      
-      </Tabs> */}
+  <InitialLayout/>
+
     </SafeAreaView>
     </SafeAreaProvider>
+      </ClerkLoaded>
       </ClerkProvider>
   )
 }

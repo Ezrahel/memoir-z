@@ -7,6 +7,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
+    justifyContent: "center",
+    alignItems: "center",
   },
   brandSection: {
     alignItems: "center",
@@ -26,6 +28,7 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
     fontFamily: "JetBrainsMono-Medium",
     color: COLORS.primary,
+  
     letterSpacing: 0.5,
     marginBottom: 8,
   },
@@ -34,6 +37,7 @@ export const styles = StyleSheet.create({
     color: COLORS.grey,
     letterSpacing: 1,
     textTransform: "lowercase",
+
   },
   illustrationContainer: {
     flex: 1,
@@ -89,5 +93,6 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: COLORS.grey,
     maxWidth: 280,
+    marginRight: 190
   },
 });
