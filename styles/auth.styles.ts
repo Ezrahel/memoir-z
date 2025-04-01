@@ -93,6 +93,51 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: COLORS.grey,
     maxWidth: 280,
-    marginRight: 190
+   
   },
+  containers: {
+    flex: 1,
+    justifyContent: 'flex-end',  // Pushes form to the bottom
+    paddingHorizontal: 20,
+    paddingBottom: 40, // Adds some space from the bottom
+},
+formContainer: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3, // For Android shadow
+},
+heading: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 15,
+    color: '#333',
+},
+input: {
+    height: 45,
+    borderColor: '#ddd',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    fontSize: 14,
+    backgroundColor: '#f9f9f9',
+    marginBottom: 12,
+},
+button: {
+    backgroundColor: '#007bff',
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 10,
+},
+buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+},
 });

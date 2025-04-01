@@ -1,7 +1,7 @@
 import { COLORS } from '@/constants/theme';
 import { styles } from '@/styles/auth.styles';
 import { Ionicons } from '@expo/vector-icons';
-import { Text, TextInput, TouchableOpacity, View, Image } from 'react-native'
+import { Text, TextInput, TouchableOpacity, View, Image, KeyboardAvoidingView,Platform } from 'react-native'
 
 
 import { useSignIn, useSSO } from '@clerk/clerk-expo'
@@ -26,7 +26,7 @@ export default function login() {
           identifier: emailAddress,
           password,
         })
-  
+
         // If sign-in process is complete, set the created session as active
         // and redirect the user
         if (signInAttempt.status === 'complete') {
@@ -47,7 +47,7 @@ export default function login() {
     const handleGoogleSignIn = async()=>{
         try{
             const { createdSessionId, setActive}=await startSSOFlow({strategy: "oauth_google"});
-            if (setActive&&createdSessionId){
+            if (setActive && createdSessionId){
                 setActive({session: createdSessionId});
                 router.replace("/(tabs)/profile");
             }
@@ -55,7 +55,8 @@ export default function login() {
             console.error("OAuth error:", error);
         }
     };
-  
+    
+
     return(
         <View style={styles.container}>
             <View style={styles.brandSection}>
@@ -80,26 +81,43 @@ export default function login() {
                 resizeMode='contain'/>
                     
         </View>
+        <KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"} 
+            style={styles.container}
+        >
+      
+
         
-        <View style={styles.loginSection}>
-        {/* <TouchableOpacity 
+        <TouchableOpacity 
         onPress={handleGoogleSignIn}
         >
 
-        </TouchableOpacity> */}
-            <Text>Sign in</Text>
+        </TouchableOpacity>
+        <View style={styles.formContainer}>
+
+            <Text >Sign in</Text>
             <TextInput
+            style={styles.input}
             autoCapitalize="none"
             value={emailAddress}
             placeholder="Enter email"
+            placeholderTextColor="#aaa"
             onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
+            keyboardType="email-address"
             />
             <TextInput
+            style={styles.input}
             value={password}
             placeholder="Enter password"
+            placeholderTextColor="#aaa"
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
             />
+            </View>
+            <TouchableOpacity style={styles.button}
+            onPress={onSignInPress}>
+                    <Text style={styles.buttonText}>Sign In</Text>
+                </TouchableOpacity>
 
             <TouchableOpacity style={styles.googleButton}
              onPress={handleGoogleSignIn}
@@ -112,19 +130,19 @@ export default function login() {
             <View style={{ display: 'flex', flexDirection: 'row', gap: 3 }}>
             <Text>Don't have an account?</Text>
             <Link href="/signup">
-                <Text>Sign up</Text>
+            <Text>Sign up</Text>
             </Link>
             <Text style={styles.termsText}
             >
-                By continuing, you agree to our terms and privacy policy.
+            By continuing, you agree to our terms and privacy policy.
             </Text>
             </View>
+</KeyboardAvoidingView>
         </View>
- </View>
 
 
+        
 
    
-
     );
-}
+};
