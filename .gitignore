@@ -4,6 +4,7 @@
 node_modules/
 
 # Expo
+.env.local
 .expo/
 dist/
 web-build/

@@ -4,7 +4,7 @@ import { Stack, Tabs } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { ClerkLoaded, ClerkProvider } from '@clerk/clerk-expo'
-import { tokenCache } from '@clerk/clerk-expo/token-cache'
+import { tokenCache } from '@/cache';
 import { Slot } from 'expo-router'
 import InitialLayout from "@/components/InitialLayout";
 
