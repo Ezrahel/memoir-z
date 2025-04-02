@@ -8,11 +8,10 @@ export default function index() {
     >
       <Text >Edit app/index.tsx to edit this screen, Israel.</Text>
      
-      <Image source={require("../../assets/images/icon.png")} style={{
-        width: 100,height:100,
-        backgroundColor: 'red'}}/>
+     
         <Link href="/notifications">
           Feed screen
+          feddddddddddddddddddddddddddddddddddddddd
         </Link>
     </View>
   );

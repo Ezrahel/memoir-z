@@ -9,6 +9,7 @@ export default function SignUpScreen() {
 
   const [emailAddress, setEmailAddress] = React.useState('')
   const [password, setPassword] = React.useState('')
+  const [username, setUsername] = React.useState('')
   const [pendingVerification, setPendingVerification] = React.useState(false)
   const [code, setCode] = React.useState('')
 
@@ -16,10 +17,13 @@ export default function SignUpScreen() {
   const onSignUpPress = async () => {
     if (!isLoaded) return
 
+    console.log(emailAddress, password)
+
     // Start sign-up process using email and password provided
     try {
       await signUp.create({
         emailAddress,
+        username,
         password,
       })
 
@@ -50,7 +54,7 @@ export default function SignUpScreen() {
       // and redirect the user
       if (signUpAttempt.status === 'complete') {
         await setActive({ session: signUpAttempt.createdSessionId })
-        router.replace('/(tabs)/profile')
+        router.replace('/(tabs)')
       } else {
         // If the status is not complete, check why. User may need to
         // complete further steps.
@@ -84,6 +88,13 @@ export default function SignUpScreen() {
       <>
         <Text>Sign up</Text>
         <TextInput
+        autoCapitalize="none"
+        value={username}
+        placeholder="Enter username"
+        onChangeText={(text) => setUsername(text)}
+        />
+          
+        <TextInput
           autoCapitalize="none"
           value={emailAddress}
           placeholder="Enter email"
@@ -100,7 +111,7 @@ export default function SignUpScreen() {
         </TouchableOpacity>
         <View style={{ display: 'flex', flexDirection: 'row', gap: 3 }}>
           <Text>Already have an account?</Text>
-          <Link href="/login">
+          <Link href="/(auth)/login">
             <Text>Sign in</Text>
           </Link>
         </View>

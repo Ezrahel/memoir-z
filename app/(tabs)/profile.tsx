@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import {Text, View} from 'react-native';
 
 export default function profile() {
@@ -6,6 +7,10 @@ export default function profile() {
         <Text>
             This is the Profile page
         </Text>
+            <Link href='/(auth)/signup'>
+            <Text>Sign in</Text>
+            </Link>
+
     </View>
    )
 }
