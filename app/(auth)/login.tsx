@@ -113,6 +113,10 @@ export default function login() {
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
             />
+            <Text>Don't have an account?</Text>
+            <Link href="/signup">
+            <Text>Sign up</Text>
+            </Link>
             </View>
             <TouchableOpacity style={styles.button}
             onPress={onSignInPress}>
